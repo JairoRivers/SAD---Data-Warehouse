@@ -9,6 +9,7 @@ CREATE TABLE DimensaoData (
     NomeDiaSemana NVARCHAR(20)
 );
 
+
 -- Inserindo dados na Dimensão de Data
 INSERT INTO DimensaoData (DataCompleta, Ano, Mes, Dia, NomeMes, NomeDiaSemana)
 SELECT DISTINCT
@@ -19,6 +20,7 @@ SELECT DISTINCT
     DATENAME(MONTH, DataVenda) AS NomeMes,
     DATENAME(WEEKDAY, DataVenda) AS NomeDiaSemana
 FROM Vendas;
+
 
 -- Tabela Dimensão Cliente
 CREATE TABLE DimensaoCliente (
