@@ -1,4 +1,4 @@
---Tabela Dimensão de Data
+-- Tabela Dimensão de Data
 CREATE TABLE DimensaoData (
     DataID INT IDENTITY(1,1) PRIMARY KEY,
     DataCompleta DATE,
