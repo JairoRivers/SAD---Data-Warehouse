@@ -92,4 +92,3 @@ FROM Vendas v
 INNER JOIN DimensaoData d ON CAST(v.DataVenda AS DATE) = d.DataCompleta
 INNER JOIN DimensaoProduto p ON v.ProdutoID = p.ProdutoID
 INNER JOIN DimensaoVendedor vd ON v.VendedorID = vd.VendedorID;
-
