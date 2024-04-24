@@ -96,15 +96,14 @@ FROM Vendas;
 
 -- Tabela Dimensão Produto
 CREATE TABLE DimensaoProduto (
-    ProdutoID INT PRIMARY KEY,
+    ProdutoID INT IDENTITY(1,1) PRIMARY KEY,
     NomeProduto NVARCHAR(100),
     PrecoUnitario DECIMAL(10, 2)
 );
 
 -- Inserindo dados na Dimensão Produto
-INSERT INTO DimensaoProduto (ProdutoID, NomeProduto, PrecoUnitario)
+INSERT INTO DimensaoProduto (NomeProduto, PrecoUnitario)
 SELECT DISTINCT
-    ProdutoID,
     NomeProduto,
     PrecoUnitario
 FROM Vendas;
