@@ -1,7 +1,8 @@
 -- Aplicando o ETL no banco de dados da atividade
 -- Esse cenário seria a tratativa inicial das mudanças de nomenclaturas
 
--- Extração (Extract)
+-- Extração (Extract) -> Veruficação de tabelas importantes para ETL
+
 -- Alteração dos nomes das tabelas 
 EXEC sp_rename 'tbdep', 'Dependentes';
 EXEC sp_rename 'tbpro', 'Produtos';
