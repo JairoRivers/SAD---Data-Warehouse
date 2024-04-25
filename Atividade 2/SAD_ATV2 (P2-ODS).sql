@@ -59,14 +59,6 @@ CREATE TABLE Produtos(
     Status          varchar(50) NULL
 );
 
--- Criando a Tabela de Venda
-
--- Modificações de nomenclatura das colunas:
--- cdven -> ID_Venda, dtven -> Data, cdcli -> ID_Cliente,
--- nmcli -> Nome_Cliente, agecli -> Idade_Cliente, clacli -> Classificacao_Cliente,
--- sxcli -> Sexo_Cliente, cidcli -> Cidade_Cliente, estcli -> Estado_Cliente, 
--- paicli -> Pais_Cliente, canal -> Canal, stven -> Status, cdvdd -> ID_Vendedor
-
 -- Criando a Tabela de Clientes
 CREATE TABLE Clientes (
     ID_Cliente smallint PRIMARY KEY,
@@ -78,6 +70,14 @@ CREATE TABLE Clientes (
     Estado varchar(50),
     Pais varchar(50)
 );
+
+-- Criando a Tabela de Venda
+
+-- Modificações de nomenclatura das colunas:
+-- cdven -> ID_Venda, dtven -> Data, cdcli -> ID_Cliente,
+-- nmcli -> Nome_Cliente, agecli -> Idade_Cliente, clacli -> Classificacao_Cliente,
+-- sxcli -> Sexo_Cliente, cidcli -> Cidade_Cliente, estcli -> Estado_Cliente, 
+-- paicli -> Pais_Cliente, canal -> Canal, stven -> Status, cdvdd -> ID_Vendedor
 
 CREATE TABLE Venda(
     ID_Venda         smallint PRIMARY KEY,
