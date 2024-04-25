@@ -8,11 +8,15 @@ CREATE DATABASE BD_Atividade2;
 USE BD_Atividade2;
 
 -- Criando a Tabela de Vendedor
--- cdvdd -> ID_Vendedor, nmvdd -> Nome, sxvdd -> Sexo, perccomissao -> Percentual_Comissao, matfunc -> Matricula
+
+-- Modificações de nomenclatura:
+-- cdvdd -> ID_Vendedor, nmvdd -> Nome, sxvdd -> Sexo,
+-- perccomissao -> Percentual_Comissao, matfunc -> Matricula
+
 CREATE TABLE Vendedores (
    ID_Vendedor      smallint IDENTITY(1,1) PRIMARY KEY,
    Nome             varchar(50),
-   Sexo             char(1),
+   Sexo             char(1), -- Padronizado
    Percentual_Comissao decimal(19,2),
    Matricula smallint not null
 ); 
@@ -33,14 +37,18 @@ VALUES
 ('Gabriela Nobre', 'F', 0.5, 11);
 
 -- Criando a Tabela de Dependentes
--- cddep -> ID_Depedente, nmdep -> Nome, dtnasc -> Data_Nascimento, sxdep -> Sexo, cdvdd -> ID_Vendedor, inepescola -> Inep_Escola
+
+-- Modificações de nomenclatura:
+-- cddep -> ID_Depedente, nmdep -> Nome, dtnasc -> Data_Nascimento,
+-- sxdep -> Sexo, cdvdd -> ID_Vendedor, inepescola -> Inep_Escola
+
 CREATE TABLE Dependentes (
    ID_Dependente    INT IDENTITY(1,1) PRIMARY KEY,
    Nome             varchar(50),
    Data_Nascimento  date,
    Sexo             char(1),
    ID_Vendedor      smallint,
-   InepEscola       varchar(10) UNIQUE,
+   InepEscola       varchar(10) UNIQUE, -- Evitar duplicidade
    CONSTRAINT FK_Dependente_Vendedor FOREIGN KEY (ID_Vendedor) REFERENCES Vendedores (ID_Vendedor)
 );
 
@@ -54,7 +62,11 @@ VALUES
 ('Luis Gustavo', '2010-05-05', 'M', 2, '11001669');
 
 -- Criando a Tabela de Produtos
--- cdpro -> ID_Produto, nmpro -> Nome, tppro -> Tipo, undpro -> Unidade, slpro -> Saldo, stpro -> Status
+
+-- Modificações de nomenclatura:
+-- cdpro -> ID_Produto, nmpro -> Nome, tppro -> Tipo,
+-- undpro -> Unidade, slpro -> Saldo, stpro -> Status
+
 CREATE TABLE Produtos(
     ID_Produto      INT IDENTITY(1,1) PRIMARY KEY,
     Nome            varchar(50) NULL,
@@ -78,7 +90,13 @@ VALUES
 
 
 -- Criando a Tabela de Venda
--- cdven -> ID_Venda, dtven -> Data, cdcli -> ID_Cliente, nmcli -> Nome_Cliente, agecli -> Idade_Cliente, clacli -> Classificacao_Cliente, sxcli -> Sexo_Cliente, cidcli -> Cidade_Cliente, estcli -> Estado_Cliente, paicli -> Pais_Cliente, canal -> Canal, stven -> Status, cdvdd -> ID_Vendedor
+
+-- Modificações de nomenclatura:
+-- cdven -> ID_Venda, dtven -> Data, cdcli -> ID_Cliente,
+-- nmcli -> Nome_Cliente, agecli -> Idade_Cliente, clacli -> Classificacao_Cliente,
+-- sxcli -> Sexo_Cliente, cidcli -> Cidade_Cliente, estcli -> Estado_Cliente, 
+-- paicli -> Pais_Cliente, canal -> Canal, stven -> Status, cdvdd -> ID_Vendedor
+
 CREATE TABLE Venda(
     ID_Venda         smallint PRIMARY KEY,
     Data_Venda       date NULL,
@@ -120,13 +138,17 @@ INSERT INTO Venda (ID_Venda, Data_Venda, ID_Cliente, Nome_Cliente, Idade_Cliente
 (20, '2023-04-06', 7, 'Alice Andrade', 41, 2, 'F', 'Rio de Janeiro', 'Rio de Janeiro', 'Brasil', 'Loja Virtual', 1, 3);
 
 -- Criando a Tabela de Item de Venda
--- cdvenitem -> ID_Item, cdpro -> ID_Produto, qtven -> Quantidade, vruven -> Valor_Unitario, vrtven -> Valor_Total, cdven -> ID_Venda
+
+-- Modificações de nomenclatura:
+-- cdvenitem -> ID_Item, cdpro -> ID_Produto, qtven -> Quantidade,
+-- vruven -> Valor_Unitario, vrtven -> Valor_Total, cdven -> ID_Venda
+
 CREATE TABLE Item_Venda(
     ID_Item_Venda    smallint PRIMARY KEY,
     ID_Produto       INT NULL,
     Quantidade_Venda int NULL,
     Valor_Unitario   decimal(18, 2) NULL,
-    Valor_Total      AS (Quantidade_Venda * Valor_Unitario),
+    Valor_Total      AS (Quantidade_Venda * Valor_Unitario), --Mudança para já compor o cálculo do Valor Total
     ID_Venda         smallint NULL,
     CONSTRAINT FK_ItemVenda_Produto FOREIGN KEY (ID_Produto) REFERENCES Produtos (ID_Produto),
     CONSTRAINT FK_ItemVenda_Venda FOREIGN KEY (ID_Venda) REFERENCES Venda (ID_Venda)

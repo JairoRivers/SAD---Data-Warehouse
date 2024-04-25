@@ -1,5 +1,8 @@
 -- Criação das tabelas de dimensão e fato
 
+-- Dimensões: Dim_Vendedor, Dim_Produto, Dim_Cliente, Dim_Dependente e Dim_Data
+-- Fato: Fato_Venda e Fato_Item_Venda
+
 -- Criando a Tabela Dimensão Vendedor
 CREATE TABLE Dim_Vendedor (
    ID_Vendedor      smallint PRIMARY KEY,
@@ -46,6 +49,31 @@ INSERT INTO Dim_Cliente (ID_Cliente, Nome_Cliente, Idade_Cliente, Classificacao_
 SELECT DISTINCT ID_Cliente, Nome_Cliente, Idade_Cliente, Classificacao_Cliente, Sexo_Cliente, Cidade_Cliente, Estado_Cliente, Pais_Cliente
 FROM Venda;
 
+-- Criando a Tabela Dimensão Dependentes
+CREATE TABLE Dim_Dependente (
+    ID_Dependente    INT PRIMARY KEY,
+    Nome             VARCHAR(50),
+    Data_Nascimento  DATE,
+    Sexo             CHAR(1),
+    ID_Vendedor      SMALLINT,
+    InepEscola       VARCHAR(10),
+    CONSTRAINT FK_Dim_Dependente_Vendedor FOREIGN KEY (ID_Vendedor) REFERENCES Dim_Vendedor (ID_Vendedor) -- Chave estrangeira referenciando a tabela Dim_Vendedor
+);
+
+-- Inserindo dados na tabela de Dimensão Dependentes
+INSERT INTO Dim_Dependente (ID_Dependente, Nome, Data_Nascimento, Sexo, ID_Vendedor, InepEscola)
+SELECT DISTINCT ID_Dependente, Nome, Data_Nascimento, Sexo, ID_Vendedor, InepEscola
+FROM Dependentes;
+
+-- -- Criando a Tabela Dimensão de Data
+CREATE TABLE Dim_Data (
+    ID_Data INT PRIMARY KEY,
+    Data_Completa DATE,
+    Dia TINYINT,
+    Mes TINYINT,
+    Ano SMALLINT
+);
+
 -- Criando a Tabela Fato Venda
 CREATE TABLE Fato_Venda (
     ID_Fato_Venda    smallint IDENTITY(1,1) PRIMARY KEY,
@@ -68,3 +96,20 @@ INSERT INTO Fato_Venda (Data_Venda, ID_Cliente, ID_Vendedor, ID_Produto, Quantid
 SELECT v.Data_Venda, v.ID_Cliente, v.ID_Vendedor, iv.ID_Produto, iv.Quantidade_Venda, iv.Valor_Unitario, iv.Valor_Total, v.Canal_Venda, v.Status_Venda
 FROM Venda v
 JOIN Item_Venda iv ON v.ID_Venda = iv.ID_Venda;
+
+-- Criando a Tabela Fato Item Venda
+CREATE TABLE Fato_Item_Venda (
+    ID_Item_Venda    INT PRIMARY KEY,
+    ID_Venda         INT,
+    ID_Produto       INT,
+    Quantidade_Venda INT,
+    Valor_Unitario   DECIMAL(18, 2),
+    Valor_Total      DECIMAL(29, 2),
+    CONSTRAINT FK_Fato_Item_Venda_Venda FOREIGN KEY (ID_Venda) REFERENCES Venda (ID_Venda),
+    CONSTRAINT FK_Fato_Item_Venda_Produto FOREIGN KEY (ID_Produto) REFERENCES Produtos (ID_Produto)
+);
+
+-- Inserindo dados na tabela Item_Venda
+INSERT INTO Fato_Item_Venda (ID_Item_Venda, ID_Venda, ID_Produto, Quantidade_Venda, Valor_Unitario, Valor_Total)
+SELECT iv.ID_Item_Venda, iv.ID_Venda, iv.ID_Produto, iv.Quantidade_Venda, iv.Valor_Unitario, iv.Valor_Total
+FROM Item_Venda iv;
