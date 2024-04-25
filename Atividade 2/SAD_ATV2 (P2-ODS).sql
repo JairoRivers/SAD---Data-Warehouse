@@ -28,7 +28,6 @@ CREATE TABLE Vendedores (
    Matricula smallint not null
 ); 
 
-
 -- Criando a Tabela de Dependentes
 
 -- Modificações de nomenclatura das colunas:
@@ -45,7 +44,6 @@ CREATE TABLE Dependentes (
    CONSTRAINT FK_Dependente_Vendedor FOREIGN KEY (ID_Vendedor) REFERENCES Vendedores (ID_Vendedor)
 );
 
-
 -- Criando a Tabela de Produtos
 
 -- Modificações de nomenclatura das colunas:
@@ -60,7 +58,6 @@ CREATE TABLE Produtos(
     Saldo           int NULL,
     Status          varchar(50) NULL
 );
-
 
 -- Criando a Tabela de Venda
 
