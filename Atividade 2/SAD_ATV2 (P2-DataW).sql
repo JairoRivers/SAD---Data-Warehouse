@@ -1,3 +1,5 @@
+-- Criação das tabelas de dimensão e fato
+
 -- Criando a Tabela Dimensão Vendedor
 CREATE TABLE Dim_Vendedor (
    ID_Vendedor      smallint PRIMARY KEY,
