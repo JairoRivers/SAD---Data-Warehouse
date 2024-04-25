@@ -1,12 +1,10 @@
 -- Criando o Banco de Dados
 CREATE DATABASE BD_Atividade2;
 
--- Esse banco de dados foi criado com base no original da 
--- atividade, com algumas mudanças de tipos de dados,  
--- melhoria de suas nomenclaturas de tabelas e colunas 
--- e por fim aperfeiçoamento dos contéudo dos dados.
+-- Esse banco de dados foi criado com base no original da atividade, com algumas mudanças de tipos de dados,  
+-- melhoria de suas nomenclaturas de tabelas e colunas e por fim aperfeiçoamento dos contéudo dos dados.
 
--- Definir o Banco de Dados para Uso
+-- Definindo o Banco de Dados para Uso
 USE BD_Atividade2;
 
 -- Criando a Tabela de Vendedor
@@ -40,7 +38,7 @@ CREATE TABLE Dependentes (
    Data_Nascimento  date,
    Sexo             char(1),
    ID_Vendedor      smallint,
-   InepEscola       varchar(10),
+   InepEscola       varchar(10) UNIQUE,
    CONSTRAINT FK_Dependente_Vendedor FOREIGN KEY (ID_Vendedor) REFERENCES Vendedores (ID_Vendedor)
 );
 
@@ -51,7 +49,7 @@ VALUES
 ('Luana Ribeiro', '2012-04-05', 'F', 3, '11001364'),
 ('João Victor', '2013-03-04', 'M', 3, '11001364'),
 ('Petrus Onofre', '2010-05-05', 'M', 2, '11001666'),
-('Luis Gustavo', '2010-05-05', 'M', 2, '11001667');
+('Luis Gustavo', '2010-05-05', 'M', 2, '11001669');
 
 -- Criando a Tabela de Produtos
 CREATE TABLE Produtos(
@@ -89,33 +87,33 @@ CREATE TABLE Venda(
     Estado_Cliente   varchar(50) NULL,
     Pais_Cliente     varchar(50) NULL,
     Canal_Venda      varchar(12) NOT NULL,
-    Status_Venda     smallint NULL, -- 1 concluída, 2 em aberto, 3 cancelada
+    Status_Venda     smallint NULL,
     ID_Vendedor      smallint NULL,
     CONSTRAINT FK_Venda_Vendedor FOREIGN KEY (ID_Vendedor) REFERENCES Vendedores (ID_Vendedor)
 );
 
 -- Inserirando dados na tabela de Venda
-INSERT INTO Venda (ID_Venda, Data_Venda, ID_Cliente, Nome_Cliente, Idade_Cliente, Classificacao_Cliente, Sexo_Cliente, Cidade_Cliente, Estado_Cliente, Pais_Cliente, Canal_Venda, Status_Venda, Deletado, ID_Vendedor) VALUES 
-(1, '2010-02-01', 1, 'Gustavo Ramos', 30, 3, 'M', 'Florianópolis', 'Santa Catarina', 'Brasil', 'Loja Própria', 1, 0, 1),
-(2, '2022-07-08', 2, 'Arthur Almeida', 57, 1, 'M', 'Gramado', 'Rio Grande do Sul', 'Brasil', 'Loja Virtual', 1, 0, 2),
-(3, '2022-07-08', 3, 'Carla Ribeiro', 50, 1, 'F', 'Fortaleza', 'Ceará', 'Brasil', 'Loja Virtual', 1, 0, 4),
-(4, '2022-07-08', 4, 'André Costa', 57, 2, 'M', 'Canela', 'Rio Grande do Sul', 'Brasil', 'Loja Virtual', 1, 0, 2), -- Duplicidade de Cliente!
-(5, '2019-07-08', 5, 'Aline Amaral', 22, 1, 'F', 'São Paulo', 'São Paulo', 'Brasil', 'Loja Virtual', 1, 0, 3),
-(6, '2018-04-08', 6, 'Ana Amorim', 30, 4, 'F', 'São Paulo', 'São Paulo', 'Brasil', 'Loja Virtual', 1, 0, 4),
-(7, '2020-05-08', 7, 'Alice Andrade', 41, 2, 'F', 'Rio de Janeiro', 'Rio de Janeiro', 'Brasil', 'Loja Virtual', 1, 0, 3),
-(8, '2011-06-08', 8, 'Amanda Alves', 19, 1, 'F', 'Eusébio', 'Ceará', 'Brasil', 'Loja Própria', 3, 0, 8),
-(9, '2012-07-04', 9, 'Amélia Albuquerque', 28, 5, 'F', 'Salvador', 'Bahia', 'Brasil', 'Loja Virtual', 2, 0, 5),
-(10, '2013-03-03', 9, 'Amélia Albuquerque', 28, 5, 'F', 'Salvador', 'Bahia', 'Brasil', 'Loja Virtual', 1, 0, 6),
-(11, '2016-07-01', 10, 'Alex Araújo', 28, 2, 'F', 'Vitória', 'Espirito Santo', 'Brasil', 'Loja Virtual', 2, 0, 5),
-(12, '2016-05-03', 11, 'Andressa Alencar', 29, 3, 'F', 'Natal', 'Rio Grande do Norte', 'Brasil', 'Loja Virtual', 1, 0, 6),
-(13, '2015-07-01', 12, 'Wagner Almeida', 30, 1, 'M', 'Natal', 'Rio Grande do Norte', 'Brasil', 'Loja Virtual', 1, 0, 5),
-(14, '2015-06-02', 13, 'Bianca Barbosa', 31, 4, 'M', 'São Luis', 'Maranhão', 'Brasil', 'Loja Virtual', 1, 0, 6),
-(15, '2017-07-04', 14, 'Bruna Borges', 32, 4, 'F', 'Florianópolis', 'Santa Catarina', 'Brasil', 'Loja Virtual', 1, 0, 5),
-(16, '2017-05-03', 15, 'Lucas Cardoso', 33, 5, 'M', 'Aracaju', 'Sergipe', 'Brasil', 'Loja Virtual', 1, 0, 6),
-(17, '2023-01-08', 16, 'César Castro', 19, 1, 'M', 'Eusébio', 'Ceará', 'Brasil', 'Loja Própria', 1, 0, 8),
-(18, '2023-02-08', 16, 'César Castro', 19, 1, 'M', 'Eusébio', 'Ceará', 'Brasil', 'Loja Própria', 1, 0, 8),
-(19, '2023-03-08', 16, 'César Castro', 19, 1, 'M', 'Eusébio', 'Ceará', 'Brasil', 'Loja Própria', 1, 0, 8),
-(20, '2023-04-06', 7, 'Alice Andrade', 41, 2, 'F', 'Rio de Janeiro', 'Rio de Janeiro', 'Brasil', 'Loja Virtual', 1, 1, 3);
+INSERT INTO Venda (ID_Venda, Data_Venda, ID_Cliente, Nome_Cliente, Idade_Cliente, Classificacao_Cliente, Sexo_Cliente, Cidade_Cliente, Estado_Cliente, Pais_Cliente, Canal_Venda, Status_Venda, ID_Vendedor) VALUES 
+(1, '2010-02-01', 1, 'Gustavo Ramos', 30, 3, 'M', 'Florianópolis', 'Santa Catarina', 'Brasil', 'Loja Própria', 1, 1),
+(2, '2022-07-08', 2, 'Arthur Almeida', 57, 1, 'M', 'Gramado', 'Rio Grande do Sul', 'Brasil', 'Loja Virtual', 1, 2),
+(3, '2022-07-08', 3, 'Carla Ribeiro', 50, 1, 'F', 'Fortaleza', 'Ceará', 'Brasil', 'Loja Virtual', 1, 4),
+(4, '2022-07-08', 4, 'André Costa', 57, 2, 'M', 'Canela', 'Rio Grande do Sul', 'Brasil', 'Loja Virtual', 1, 2), -- Duplicidade de Cliente!
+(5, '2019-07-08', 5, 'Aline Amaral', 22, 1, 'F', 'São Paulo', 'São Paulo', 'Brasil', 'Loja Virtual', 1, 3),
+(6, '2018-04-08', 6, 'Ana Amorim', 30, 4, 'F', 'São Paulo', 'São Paulo', 'Brasil', 'Loja Virtual', 1, 4),
+(7, '2020-05-08', 7, 'Alice Andrade', 41, 2, 'F', 'Rio de Janeiro', 'Rio de Janeiro', 'Brasil', 'Loja Virtual', 1, 3),
+(8, '2011-06-08', 8, 'Amanda Alves', 19, 1, 'F', 'Eusébio', 'Ceará', 'Brasil', 'Loja Própria', 3, 8),
+(9, '2012-07-04', 9, 'Amélia Albuquerque', 28, 5, 'F', 'Salvador', 'Bahia', 'Brasil', 'Loja Virtual', 2, 5),
+(10, '2013-03-03', 9, 'Amélia Albuquerque', 28, 5, 'F', 'Salvador', 'Bahia', 'Brasil', 'Loja Virtual', 1, 6),
+(11, '2016-07-01', 10, 'Alex Araújo', 28, 2, 'F', 'Vitória', 'Espirito Santo', 'Brasil', 'Loja Virtual', 2, 5),
+(12, '2016-05-03', 11, 'Andressa Alencar', 29, 3, 'F', 'Natal', 'Rio Grande do Norte', 'Brasil', 'Loja Virtual', 1, 6),
+(13, '2015-07-01', 12, 'Wagner Almeida', 30, 1, 'M', 'Natal', 'Rio Grande do Norte', 'Brasil', 'Loja Virtual', 1, 5),
+(14, '2015-06-02', 13, 'Bianca Barbosa', 31, 4, 'M', 'São Luis', 'Maranhão', 'Brasil', 'Loja Virtual', 1, 6),
+(15, '2017-07-04', 14, 'Bruna Borges', 32, 4, 'F', 'Florianópolis', 'Santa Catarina', 'Brasil', 'Loja Virtual', 1, 5),
+(16, '2017-05-03', 15, 'Lucas Cardoso', 33, 5, 'M', 'Aracaju', 'Sergipe', 'Brasil', 'Loja Virtual', 1, 6),
+(17, '2023-01-08', 16, 'César Castro', 19, 1, 'M', 'Eusébio', 'Ceará', 'Brasil', 'Loja Própria', 1, 8),
+(18, '2023-02-08', 16, 'César Castro', 19, 1, 'M', 'Eusébio', 'Ceará', 'Brasil', 'Loja Própria', 1, 8),
+(19, '2023-03-08', 16, 'César Castro', 19, 1, 'M', 'Eusébio', 'Ceará', 'Brasil', 'Loja Própria', 1, 8),
+(20, '2023-04-06', 7, 'Alice Andrade', 41, 2, 'F', 'Rio de Janeiro', 'Rio de Janeiro', 'Brasil', 'Loja Virtual', 1, 3);
 
 
 -- Criando a Tabela de Item de Venda
@@ -167,7 +165,7 @@ INSERT INTO Item_Venda VALUES
 (35, 1, 5000, 0.34, 0, 7),
 (36, 2, 300, 1.50, 0, 8),
 (37, 3, 4000, 0.50, 0, 8),
-(38, 1, 4000, 0.34, 0, 9);
+(38, 1, 4000, 0.34, 0, 9),
 (39, 1, 6000, 0.34, 0, 9),
 (40, 1, 4500, 0.34, 0, 9),
 (41, 1, 5000, 0.34, 0, 10),
