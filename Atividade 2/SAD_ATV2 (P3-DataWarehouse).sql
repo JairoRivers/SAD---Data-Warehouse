@@ -96,20 +96,3 @@ INSERT INTO Fato_Venda (Data_Venda, ID_Cliente, ID_Vendedor, ID_Produto, Quantid
 SELECT v.Data_Venda, v.ID_Cliente, v.ID_Vendedor, iv.ID_Produto, iv.Quantidade_Venda, iv.Valor_Unitario, iv.Valor_Total, v.Canal_Venda, v.Status_Venda
 FROM Venda v
 JOIN Item_Venda iv ON v.ID_Venda = iv.ID_Venda;
-
--- Criando a Tabela Fato Item Venda
-CREATE TABLE Fato_Item_Venda (
-    ID_Item_Venda    INT PRIMARY KEY,
-    ID_Venda         INT,
-    ID_Produto       INT,
-    Quantidade_Venda INT,
-    Valor_Unitario   DECIMAL(18, 2),
-    Valor_Total      DECIMAL(29, 2),
-    CONSTRAINT FK_Fato_Item_Venda_Venda FOREIGN KEY (ID_Venda) REFERENCES Venda (ID_Venda),
-    CONSTRAINT FK_Fato_Item_Venda_Produto FOREIGN KEY (ID_Produto) REFERENCES Produtos (ID_Produto)
-);
-
--- Inserindo dados na tabela Item_Venda
-INSERT INTO Fato_Item_Venda (ID_Item_Venda, ID_Venda, ID_Produto, Quantidade_Venda, Valor_Unitario, Valor_Total)
-SELECT iv.ID_Item_Venda, iv.ID_Venda, iv.ID_Produto, iv.Quantidade_Venda, iv.Valor_Unitario, iv.Valor_Total
-FROM Item_Venda iv;
