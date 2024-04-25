@@ -69,14 +69,14 @@ CREATE TABLE Produtos(
 
 -- Criando a Tabela de Clientes
 CREATE TABLE Clientes (
-    ID_Cliente INT PRIMARY KEY,
-    Nome VARCHAR(50),
-    Idade SMALLINT,
-    Classe SMALLINT,
+    ID_Cliente smallint PRIMARY KEY,
+    Nome varchar(50),
+    Idade smallint,
+    Classe smallint,
     Sexo char(1),
-    Cidade VARCHAR(50),
-    Estado VARCHAR(50),
-    Pais VARCHAR(50)
+    Cidade varchar(50),
+    Estado varchar(50),
+    Pais varchar(50)
 );
 
 CREATE TABLE Venda(
