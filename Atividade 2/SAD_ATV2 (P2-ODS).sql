@@ -79,7 +79,7 @@ CREATE TABLE Item_Venda(
     ID_Produto       INT NULL,
     Quantidade_Venda int NULL,
     Valor_Unitario   decimal(18, 2) NULL,
-    Valor_Total      AS (Quantidade_Venda * Valor_Unitario), --Mudança para já compor o cálculo do Valor Total
+    Valor_Total      AS (Quantidade_Venda * Valor_Unitario), -- Mudança para já compor o cálculo do Valor Total
     ID_Venda         smallint NULL,
     CONSTRAINT FK_ItemVenda_Produto FOREIGN KEY (ID_Produto) REFERENCES Produtos (ID_Produto),
     CONSTRAINT FK_ItemVenda_Venda FOREIGN KEY (ID_Venda) REFERENCES Venda (ID_Venda)
