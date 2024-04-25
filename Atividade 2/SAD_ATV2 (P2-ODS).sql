@@ -1,7 +1,7 @@
 -- Criando o Banco de Dados
 CREATE DATABASE BD_Atividade2;
 
--- Aplicando o ETL
+-- Criando o ODS
 -- Esse banco de dados foi criado com base no original da atividade, com algumas mudanças de tipos de dados,  
 -- melhoria de suas nomenclaturas de tabelas e colunas e por fim aperfeiçoamento dos contéudo dos dados.
 

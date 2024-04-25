@@ -198,7 +198,7 @@ INSERT INTO tbven_item VALUES (54, 2, 300  , 1.50, 0, 19);
 INSERT INTO tbven_item VALUES (55, 6, 4000 , 0.50, 0, 20);
 
 
--- Modificações
+-- Aplicando o ETL
 -- Esse cenário seria a tratativa inicial das mudanças de nomenclaturas
 
 -- Alteração dos nomes das tabelas
@@ -258,11 +258,16 @@ EXEC sp_rename 'Itens_Venda.cdven', 'ID_Venda', 'COLUMN';
 -- Updates de Informações de Dependentes
 UPDATE Vendedores
 SET Nome = 
-    CASE ID_Dependente
+    CASE ID_Vendedor
         WHEN 1 THEN 'Vendedor 1'
         WHEN 2 THEN 'Vendedor 2'
         WHEN 3 THEN 'Vendedor 3'
         WHEN 4 THEN 'Vendedor 4'
         WHEN 5 THEN 'Venderor 5'
         WHEN 6 THEN 'Venderor 6'
+        WHEN 7 THEN 'Venderor 7'
+        WHEN 8 THEN 'Venderor 8'
+        WHEN 9 THEN 'Venderor 9'
+        WHEN 10 THEN 'Venderor 10'
+        WHEN 11 THEN 'Venderor 11'
     END;
