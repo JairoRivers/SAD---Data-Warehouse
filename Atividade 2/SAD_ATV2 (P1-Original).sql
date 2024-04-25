@@ -9,6 +9,9 @@ EXEC sp_rename 'tbven', 'Venda';
 EXEC sp_rename 'tbven_item', 'Itens_Venda';
 
 -- Update dos nomes das colunas de Dependentes
+-- Modificações de nomenclatura das colunas:
+-- cddep -> ID_Depedente, nmdep -> Nome, dtnasc -> Data_Nascimento,
+-- sxdep -> Sexo, cdvdd -> ID_Vendedor, inepescola -> Inep_Escola
 EXEC sp_rename 'Dependentes.cddep', 'ID_Dependente', 'COLUMN';
 EXEC sp_rename 'Dependentes.nmdep', 'Nome', 'COLUMN';
 EXEC sp_rename 'Dependentes.dtnasc', 'Data_Nascimento', 'COLUMN';
@@ -17,6 +20,9 @@ EXEC sp_rename 'Dependentes.cdvdd', 'ID_Vendedor', 'COLUMN';
 EXEC sp_rename 'Dependentes.inepescola', 'Inep_Escola', 'COLUMN';
 
 -- Update dos nomes das colunas de Produtos
+-- Modificações de nomenclatura das colunas:
+-- cdpro -> ID_Produto, nmpro -> Nome, tppro -> Tipo,
+-- undpro -> Unidade, slpro -> Saldo, stpro -> Status
 EXEC sp_rename 'Produtos.cdpro', 'ID_Produto', 'COLUMN';
 EXEC sp_rename 'Produtos.nmpro', 'Nome', 'COLUMN';
 EXEC sp_rename 'Produtos.tppro', 'Tipo', 'COLUMN';
@@ -25,6 +31,9 @@ EXEC sp_rename 'Produtos.slpro', 'Saldo', 'COLUMN';
 EXEC sp_rename 'Produtos.stpro', 'Status', 'COLUMN';
 
 -- Update dos nomes das colunas de Vendedores
+-- Modificações de nomenclatura das colunas:
+-- cdvdd -> ID_Vendedor, nmvdd -> Nome, sxvdd -> Sexo,
+-- perccomissao -> Percentual_Comissao, matfunc -> Matricula
 EXEC sp_rename 'Vendedores.cdvdd', 'ID_Vendedor', 'COLUMN';
 EXEC sp_rename 'Vendedores.nmvdd', 'Nome', 'COLUMN';
 EXEC sp_rename 'Vendedores.sxvdd', 'Sexo', 'COLUMN';
@@ -32,6 +41,11 @@ EXEC sp_rename 'Vendedores.perccomissao', 'Percentual_Comissao', 'COLUMN';
 EXEC sp_rename 'Vendedores.matfunc', 'Matricula', 'COLUMN';
 
 -- Update dos nomes das colunas de Venda
+-- Modificações de nomenclatura das colunas:
+-- cdven -> ID_Venda, dtven -> Data, cdcli -> ID_Cliente,
+-- nmcli -> Nome_Cliente, agecli -> Idade_Cliente, clacli -> Classificacao_Cliente,
+-- sxcli -> Sexo_Cliente, cidcli -> Cidade_Cliente, estcli -> Estado_Cliente, 
+-- paicli -> Pais_Cliente, canal -> Canal, stven -> Status, cdvdd -> ID_Vendedor
 EXEC sp_rename 'Venda.cdven', 'ID_Venda', 'COLUMN';
 EXEC sp_rename 'Venda.dtven', 'Data', 'COLUMN';
 EXEC sp_rename 'Venda.cdcli', 'ID_Cliente', 'COLUMN';
@@ -48,6 +62,9 @@ EXEC sp_rename 'Venda.deleted', 'Deletado', 'COLUMN';
 EXEC sp_rename 'Venda.cdvdd', 'ID_Vendedor', 'COLUMN';
 
 -- Update dos nomes das colunas de Itens de Venda
+-- Modificações de nomenclatura das colunas:
+-- cdvenitem -> ID_Item, cdpro -> ID_Produto, qtven -> Quantidade,
+-- vruven -> Valor_Unitario, vrtven -> Valor_Total, cdven -> ID_Venda
 EXEC sp_rename 'Itens_Venda.cdvenitem', 'ID_Item', 'COLUMN';
 EXEC sp_rename 'Itens_Venda.cdpro', 'ID_Produto', 'COLUMN';
 EXEC sp_rename 'Itens_Venda.qtven', 'Quantidade', 'COLUMN';
