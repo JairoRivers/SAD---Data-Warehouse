@@ -67,21 +67,27 @@ CREATE TABLE Produtos(
 -- sxcli -> Sexo_Cliente, cidcli -> Cidade_Cliente, estcli -> Estado_Cliente, 
 -- paicli -> Pais_Cliente, canal -> Canal, stven -> Status, cdvdd -> ID_Vendedor
 
+-- Criando a Tabela de Clientes
+CREATE TABLE Clientes (
+    ID_Cliente INT PRIMARY KEY,
+    Nome VARCHAR(50),
+    Idade SMALLINT,
+    Classe SMALLINT,
+    Sexo char(1),
+    Cidade VARCHAR(50),
+    Estado VARCHAR(50),
+    Pais VARCHAR(50)
+);
+
 CREATE TABLE Venda(
     ID_Venda         smallint PRIMARY KEY,
     Data_Venda       date NULL,
     ID_Cliente       smallint NULL,
-    Nome_Cliente     varchar(50) NULL,
-    Idade_Cliente    smallint NULL,
-    Classificacao_Cliente   smallint NULL,
-    Sexo_Cliente     char(1) NULL,
-    Cidade_Cliente   varchar(50) NULL,
-    Estado_Cliente   varchar(50) NULL,
-    Pais_Cliente     varchar(50) NULL,
     Canal_Venda      varchar(12) NOT NULL,
     Status_Venda     smallint NULL,
     ID_Vendedor      smallint NULL,
-    CONSTRAINT FK_Venda_Vendedor FOREIGN KEY (ID_Vendedor) REFERENCES Vendedores (ID_Vendedor)
+    CONSTRAINT FK_Venda_Vendedor FOREIGN KEY (ID_Vendedor) REFERENCES Vendedores (ID_Vendedor),
+    CONSTRAINT FK_Venda_Cliente FOREIGN KEY (ID_Cliente) REFERENCES Clientes(ID_Cliente)
 );
 
 -- Criando a Tabela de Item de Venda
