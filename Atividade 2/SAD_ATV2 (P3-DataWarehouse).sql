@@ -90,9 +90,3 @@ CREATE TABLE Fato_Venda (
     CONSTRAINT FK_Fato_Venda_Produto FOREIGN KEY (ID_Produto) REFERENCES Dim_Produto (ID_Produto),
     CONSTRAINT FK_Fato_Venda_Cliente FOREIGN KEY (ID_Cliente) REFERENCES Dim_Cliente (ID_Cliente)
 );
-
--- Inserindo dados na tabela Fato_Venda
-INSERT INTO Fato_Venda (Data_Venda, ID_Cliente, ID_Vendedor, ID_Produto, Quantidade_Venda, Valor_Unitario, Valor_Total, Canal_Venda, Status_Venda)
-SELECT v.Data_Venda, v.ID_Cliente, v.ID_Vendedor, iv.ID_Produto, iv.Quantidade_Venda, iv.Valor_Unitario, iv.Valor_Total, v.Canal_Venda, v.Status_Venda
-FROM Venda v
-JOIN Item_Venda iv ON v.ID_Venda = iv.ID_Venda;
