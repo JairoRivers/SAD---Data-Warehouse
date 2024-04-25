@@ -1,4 +1,4 @@
--- Aplicando o ETL no banco de dados da atividade
+-- Aplicando o ETL no banco de dados da atividade, fornecido do backup bd_erp.bak
 -- Esse cenário seria a tratativa inicial das mudanças de nomenclaturas
 
 -- Extração (Extract) -> Veruficação de tabelas importantes para ETL
