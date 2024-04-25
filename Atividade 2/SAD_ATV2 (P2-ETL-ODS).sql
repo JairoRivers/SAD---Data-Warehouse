@@ -1,15 +1,22 @@
 -- Criando o Banco de Dados
 CREATE DATABASE BD_Atividade2;
 
+-- Aplicando o ETL
 -- Esse banco de dados foi criado com base no original da atividade, com algumas mudanças de tipos de dados,  
 -- melhoria de suas nomenclaturas de tabelas e colunas e por fim aperfeiçoamento dos contéudo dos dados.
 
 -- Definindo o Banco de Dados para Uso
 USE BD_Atividade2;
 
--- Criando a Tabela de Vendedor
+-- tbvdd foi renomeado para (Tabela de Vendedores)
+-- tbdep foi renomeado para (Tabela de Dependentes)
+-- tbpro foi renomeado para (Tabela de Produtos)
+-- tbven foi renomeado para (Tabela de Vendas)
+-- tbven_item foi renomeado para (Tabela de Itens de Venda)
 
--- Modificações de nomenclatura:
+-- Criando a Tabela de Vendedores
+
+-- Modificações de nomenclatura das colunas:
 -- cdvdd -> ID_Vendedor, nmvdd -> Nome, sxvdd -> Sexo,
 -- perccomissao -> Percentual_Comissao, matfunc -> Matricula
 
@@ -38,7 +45,7 @@ VALUES
 
 -- Criando a Tabela de Dependentes
 
--- Modificações de nomenclatura:
+-- Modificações de nomenclatura das colunas:
 -- cddep -> ID_Depedente, nmdep -> Nome, dtnasc -> Data_Nascimento,
 -- sxdep -> Sexo, cdvdd -> ID_Vendedor, inepescola -> Inep_Escola
 
@@ -63,7 +70,7 @@ VALUES
 
 -- Criando a Tabela de Produtos
 
--- Modificações de nomenclatura:
+-- Modificações de nomenclatura das colunas:
 -- cdpro -> ID_Produto, nmpro -> Nome, tppro -> Tipo,
 -- undpro -> Unidade, slpro -> Saldo, stpro -> Status
 
@@ -91,7 +98,7 @@ VALUES
 
 -- Criando a Tabela de Venda
 
--- Modificações de nomenclatura:
+-- Modificações de nomenclatura das colunas:
 -- cdven -> ID_Venda, dtven -> Data, cdcli -> ID_Cliente,
 -- nmcli -> Nome_Cliente, agecli -> Idade_Cliente, clacli -> Classificacao_Cliente,
 -- sxcli -> Sexo_Cliente, cidcli -> Cidade_Cliente, estcli -> Estado_Cliente, 
@@ -139,7 +146,7 @@ INSERT INTO Venda (ID_Venda, Data_Venda, ID_Cliente, Nome_Cliente, Idade_Cliente
 
 -- Criando a Tabela de Item de Venda
 
--- Modificações de nomenclatura:
+-- Modificações de nomenclatura das colunas:
 -- cdvenitem -> ID_Item, cdpro -> ID_Produto, qtven -> Quantidade,
 -- vruven -> Valor_Unitario, vrtven -> Valor_Total, cdven -> ID_Venda
 

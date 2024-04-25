@@ -1,6 +1,6 @@
--- Banco de dados (Original)
+-- Banco de dados (Original), sem modificações
 
--- Modificações desse banco de dados são feitas em SAD_ATV2 (P2-ETL-ODS)
+-- Modificações desse banco de dados são feitas em SAD_ATV2 (P2-ETL-ODS) e SAD_ATV2 (P3-DataWarehouse)
 
 CREATE DATABASE BD_Original;
 
