@@ -1,7 +1,7 @@
 -- Aplicando o ETL no banco de dados da atividade
 -- Esse cenário seria a tratativa inicial das mudanças de nomenclaturas
 
-Extração (Extract)
+-- Extração (Extract)
 -- Alteração dos nomes das tabelas 
 EXEC sp_rename 'tbdep', 'Dependentes';
 EXEC sp_rename 'tbpro', 'Produtos';
@@ -9,7 +9,7 @@ EXEC sp_rename 'tbvdd', 'Vendedores';
 EXEC sp_rename 'tbven', 'Venda';
 EXEC sp_rename 'tbven_item', 'Itens_Venda';
 
-Transformação (Transform)
+-- Transformação (Transform)
 -- Update dos nomes das colunas de Dependentes
 -- Modificações de nomenclatura das colunas:
 -- cddep -> ID_Depedente, nmdep -> Nome, dtnasc -> Data_Nascimento,
