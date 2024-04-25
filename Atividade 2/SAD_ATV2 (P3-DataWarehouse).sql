@@ -78,9 +78,9 @@ CREATE TABLE Dim_Data (
 CREATE TABLE Fato_Venda (
     ID_Fato_Venda    smallint IDENTITY(1,1) PRIMARY KEY,
     Data_Venda       date,
-    ID_Cliente       INT,
+    ID_Cliente       int,
     ID_Vendedor      smallint,
-    ID_Produto       INT,
+    ID_Produto       int,
     Quantidade_Venda int,
     Valor_Unitario   decimal(18, 2),
     Valor_Total      decimal(29, 2),
