@@ -49,7 +49,7 @@ CREATE TABLE Produtos(
     Status          varchar(50) NULL
 );
 
--- Criando a Tabela de Clientes
+-- Criando a Tabela de Clientes (Nova)
 CREATE TABLE Clientes (
     ID_Cliente smallint PRIMARY KEY,
     Nome varchar(50),
