@@ -17,7 +17,7 @@ CREATE TABLE Vendedores (
    Matricula smallint not null
 ); 
 
--- Inserirando dados na tabela de Vendedores
+-- Inserindo dados na tabela de Vendedores
 INSERT INTO Vendedores (Nome, Sexo, Percentual_Comissao, Matricula)
 VALUES 
 ('João Silva', 'M', 1, 1),
@@ -64,7 +64,7 @@ CREATE TABLE Produtos(
     Status          varchar(50) NULL
 );
 
--- Inserirando dados na tabela de Produto
+-- Inserindo dados na tabela de Produto
 INSERT INTO Produtos (Nome, Tipo, Unidade, Saldo, Status) 
 VALUES 
 ('Câmera de segurança', 'A', 'KG', 20000, 'Ativo'),
@@ -96,7 +96,7 @@ CREATE TABLE Venda(
     CONSTRAINT FK_Venda_Vendedor FOREIGN KEY (ID_Vendedor) REFERENCES Vendedores (ID_Vendedor)
 );
 
--- Inserirando dados na tabela de Venda
+-- Inserindo dados na tabela de Venda
 INSERT INTO Venda (ID_Venda, Data_Venda, ID_Cliente, Nome_Cliente, Idade_Cliente, Classificacao_Cliente, Sexo_Cliente, Cidade_Cliente, Estado_Cliente, Pais_Cliente, Canal_Venda, Status_Venda, ID_Vendedor) VALUES 
 (1, '2010-02-01', 1, 'Gustavo Ramos', 30, 3, 'M', 'Florianópolis', 'Santa Catarina', 'Brasil', 'Loja Própria', 1, 1),
 (2, '2022-07-08', 2, 'Arthur Almeida', 57, 1, 'M', 'Gramado', 'Rio Grande do Sul', 'Brasil', 'Loja Virtual', 1, 2),
@@ -132,7 +132,7 @@ CREATE TABLE Item_Venda(
     CONSTRAINT FK_ItemVenda_Venda FOREIGN KEY (ID_Venda) REFERENCES Venda (ID_Venda)
 );
 
--- Inserirando dados na tabela de Item de Venda
+-- Inserindo dados na tabela de Item de Venda
 INSERT INTO Item_Venda VALUES 
 (3, 1, 4500, 0.34, 2),
 (4, 1, 5000, 0.34, 3),
