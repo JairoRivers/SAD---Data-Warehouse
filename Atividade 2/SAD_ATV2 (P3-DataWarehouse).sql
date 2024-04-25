@@ -1,7 +1,7 @@
 -- Criação do Data Warehouse com as tabelas de dimensão e fato
 
 -- Dimensões: Dim_Vendedor, Dim_Produto, Dim_Cliente, Dim_Dependente e Dim_Data
--- Fato: Fato_Venda e Fato_Item_Venda
+-- Fato: Fato_Venda
 
 -- Criando a Tabela Dimensão Vendedor
 CREATE TABLE Dim_Vendedor (
