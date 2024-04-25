@@ -29,11 +29,6 @@ CREATE TABLE Vendedores (
 ); 
 
 -- Criando a Tabela de Dependentes
-
--- Modificações de nomenclatura das colunas:
--- cddep -> ID_Depedente, nmdep -> Nome, dtnasc -> Data_Nascimento,
--- sxdep -> Sexo, cdvdd -> ID_Vendedor, inepescola -> Inep_Escola
-
 CREATE TABLE Dependentes (
    ID_Dependente    INT IDENTITY(1,1) PRIMARY KEY,
    Nome             varchar(50),
@@ -45,11 +40,6 @@ CREATE TABLE Dependentes (
 );
 
 -- Criando a Tabela de Produtos
-
--- Modificações de nomenclatura das colunas:
--- cdpro -> ID_Produto, nmpro -> Nome, tppro -> Tipo,
--- undpro -> Unidade, slpro -> Saldo, stpro -> Status
-
 CREATE TABLE Produtos(
     ID_Produto      INT IDENTITY(1,1) PRIMARY KEY,
     Nome            varchar(50) NULL,
@@ -72,13 +62,6 @@ CREATE TABLE Clientes (
 );
 
 -- Criando a Tabela de Venda
-
--- Modificações de nomenclatura das colunas:
--- cdven -> ID_Venda, dtven -> Data, cdcli -> ID_Cliente,
--- nmcli -> Nome_Cliente, agecli -> Idade_Cliente, clacli -> Classificacao_Cliente,
--- sxcli -> Sexo_Cliente, cidcli -> Cidade_Cliente, estcli -> Estado_Cliente, 
--- paicli -> Pais_Cliente, canal -> Canal, stven -> Status, cdvdd -> ID_Vendedor
-
 CREATE TABLE Venda(
     ID_Venda         smallint PRIMARY KEY,
     Data_Venda       date NULL,
@@ -90,12 +73,7 @@ CREATE TABLE Venda(
     CONSTRAINT FK_Venda_Cliente FOREIGN KEY (ID_Cliente) REFERENCES Clientes(ID_Cliente)
 );
 
--- Criando a Tabela de Item de Venda
-
--- Modificações de nomenclatura das colunas:
--- cdvenitem -> ID_Item, cdpro -> ID_Produto, qtven -> Quantidade,
--- vruven -> Valor_Unitario, vrtven -> Valor_Total, cdven -> ID_Venda
-
+-- Criando a Tabela Item de Venda
 CREATE TABLE Item_Venda(
     ID_Item_Venda    smallint PRIMARY KEY,
     ID_Produto       INT NULL,
