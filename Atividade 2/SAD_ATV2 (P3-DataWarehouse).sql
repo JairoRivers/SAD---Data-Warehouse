@@ -69,9 +69,9 @@ FROM Dependentes;
 CREATE TABLE Dim_Data (
     ID_Data INT PRIMARY KEY,
     Data_Completa DATE,
-    Dia TINYINT,
-    Mes TINYINT,
-    Ano SMALLINT
+    Dia int,
+    Mes int,
+    Ano int
 );
 
 -- Criando a Tabela Fato Venda
