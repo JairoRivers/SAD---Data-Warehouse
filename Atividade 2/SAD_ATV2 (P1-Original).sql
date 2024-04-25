@@ -69,7 +69,7 @@ EXEC sp_rename 'Itens_Venda.vruven', 'Valor_Unitario', 'COLUMN';
 EXEC sp_rename 'Itens_Venda.vrtven', 'Valor_Total', 'COLUMN';
 EXEC sp_rename 'Itens_Venda.cdven', 'ID_Venda', 'COLUMN';
 
--- Updates de Informações de Dependentes que estavam 
+-- Updates de Informações de Dependentes que não estavam alinhados
 UPDATE Vendedores
 SET Nome = 
     CASE ID_Vendedor
