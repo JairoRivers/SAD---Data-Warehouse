@@ -46,8 +46,8 @@ CREATE TABLE Dim_Cliente (
 
 -- Inserindo dados na tabela de Dimensão Cliente
 INSERT INTO Dim_Cliente (ID_Cliente, Nome_Cliente, Idade_Cliente, Classificacao_Cliente, Sexo_Cliente, Cidade_Cliente, Estado_Cliente, Pais_Cliente)
-SELECT DISTINCT ID_Cliente, Nome_Cliente, Idade_Cliente, Classificacao_Cliente, Sexo_Cliente, Cidade_Cliente, Estado_Cliente, Pais_Cliente
-FROM Venda;
+SELECT DISTINCT ID_Cliente, Nome, Idade, Classificacao, Sexo, Cidade, Estado, Pais
+FROM Clientes;
 
 -- Criando a Tabela Dimensão Dependentes
 CREATE TABLE Dim_Dependente (
