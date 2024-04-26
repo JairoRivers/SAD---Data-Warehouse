@@ -54,7 +54,7 @@ CREATE TABLE Clientes (
     ID_Cliente smallint PRIMARY KEY,
     Nome varchar(50),
     Idade smallint,
-    Classe smallint,
+    Classificacao smallint,
     Sexo char(1),
     Cidade varchar(50),
     Estado varchar(50),
